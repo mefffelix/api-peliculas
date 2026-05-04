@@ -1,7 +1,9 @@
+const validarToken = require('../middlewares/auth');
 const express = require('express');
 const router = express.Router();
 const service = require('../services/peliculaService');
 
+router.use(validarToken);
 router.get('/', async (req, res) => {
   res.json(await service.getAll());
 });
